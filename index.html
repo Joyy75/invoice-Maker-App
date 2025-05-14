@@ -6,10 +6,26 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Invoice App</title>
+<meta name="title" content="Invoice Maker App" />
+<meta name="description" content="Easy Get Invoice Just Print It Now" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://invoicemaker.com/" />
+<meta property="og:title" content="Invoice Maker App" />
+<meta property="og:description" content="Enjoy your daily life with your plans" />
+<meta property="og:image" content="https://imgcdn.stablediffusionweb.com/2024/3/9/5b07779d-037a-4561-80cd-44f74cd04388.jpg" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://invoicemaker.com/" />
+<meta property="twitter:title" content="Invoice Maker App" />
+<meta property="twitter:description" content="Easy Get Invoice Just Print It Now" />
+<meta property="twitter:image" content="https://th.bing.com/th/id/OIP.d7RG5_ht9_x9JGT13VYMGgHaHa?w=612&h=612&rs=1&pid=ImgDetMain" />
 </head>
 
 <body>
-  <main id="app" class="flex flex-col h-screen bg-transparent bg-gradient-to-b from-slate-200 to-blue-300 sm:max-h-screen sm:mx-auto sm:w-max">
+  <main id="app" class="flex flex-col h-screen bg-transparent bg-gradient-to-b from-slate-200 to-blue-300 ">
     <header class="">
       <div class="container mx-auto">
         <div class="p-6">
@@ -109,7 +125,7 @@
     </section>
 
     <section id="productSideBar"
-      class="fixed right-0 w-[450px] h-screen bg-gradient-to-b from-slate-200 to-blue-300 bg-blue-50  shadow-2xl shadow-gray-400 rounded-lg  z-50 translate-x-full sm:max-h-screen sm:mx-auto sm:w-max ">
+      class="fixed right-0 w-[450px] h-screen bg-gradient-to-b from-slate-200 to-blue-300 bg-blue-50  shadow-2xl shadow-gray-400 rounded-lg  z-50 translate-x-full ">
 
       <div class="p-4">
         <div class="flex justify-between items-center mb-5 ">
@@ -182,7 +198,7 @@
         </div>
       </div>
     </footer>
-    <p class="text-sm text-gray-900 py-3 text-end">Developed By Joyy</p>
+    <p class="text-sm text-gray-900 py-3 text-end print:hidden">Developed By Joyy</p>
     <template id="productCardTemplate">
       <div class="product-card  p-5 flex justify-between bg-blue-50 rounded-lg border border-blue-400">
         <h3 class="product-name">Apple</h3>
@@ -218,6 +234,7 @@
         </td>
       </tr>
     </template>
+   
   </main>
   <script type="module" src="/src/main.js"></script>
 </body>
