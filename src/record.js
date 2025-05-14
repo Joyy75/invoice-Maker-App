@@ -26,6 +26,7 @@ export const createRecordFormHandler = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, add it!"
+
     }).then((result) => {
       if (result.isConfirmed) {
         updateRecordQuantity(isExistedRecord.getAttribute("row-id"), parseInt(formData.get("quantity")));
@@ -86,7 +87,8 @@ export const removeRecord = (rowId) => {
       Swal.fire({
         title: "Deleted!",
         text: "Your record has been deleted.",
-        icon: "success"
+        icon: "success",
+        confirmButtonColor: "#3085d6",
       });
     }
   });

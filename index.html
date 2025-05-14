@@ -22,10 +22,11 @@
 <meta property="twitter:title" content="Invoice Maker App" />
 <meta property="twitter:description" content="Easy Get Invoice Just Print It Now" />
 <meta property="twitter:image" content="https://th.bing.com/th/id/OIP.d7RG5_ht9_x9JGT13VYMGgHaHa?w=612&h=612&rs=1&pid=ImgDetMain" />
+
 </head>
 
 <body>
-  <main id="app" class="flex flex-col h-screen bg-transparent bg-gradient-to-b from-slate-200 to-blue-300 ">
+  <main id="app" class="flex flex-col h-screen bg-transparent bg-gradient-to-b from-slate-200 to-blue-300 sm:text-[12px]">
     <header class="">
       <div class="container mx-auto">
         <div class="p-6">
@@ -58,8 +59,8 @@
             </div>
             <div class="col-span-1">
               <button type="submit"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center w-full h-full">
-                Add Now
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium sm:text-sm rounded-lg text-sm px-5 py-2.5 text-center w-full h-full">
+                Add
               </button>
             </div>
           </div>
@@ -125,14 +126,14 @@
     </section>
 
     <section id="productSideBar"
-      class="fixed right-0 w-[450px] h-screen bg-gradient-to-b from-slate-200 to-blue-300 bg-blue-50  shadow-2xl shadow-gray-400 rounded-lg  z-50 translate-x-full ">
+      class="fixed right-0 w-[300px] h-screen bg-gradient-to-b from-slate-200 to-blue-300 bg-blue-50  shadow-2xl shadow-gray-400 rounded-lg  z-50 translate-x-full ">
 
       <div class="p-4">
         <div class="flex justify-between items-center mb-5 ">
 
           <div class="">
-            <h1 class="font-san font-bold text-2xl mt-4">Manage Inventory</h1>
-            <p class="text-blue-700 mt-1">Available Products</p>
+            <h1 class="font-san font-bold text-2xl mt-2">Manage Inventory</h1>
+            <p class="text-blue-700">Available Products</p>
           </div>
 
           <button id="closeSideBarBtn">
@@ -142,7 +143,7 @@
             </svg></button>
         </div>
 
-        <div class="flex flex-col gap-4  mb-5 mt-5" id="productGroup">
+        <div class="flex flex-col gap-4 mb-4" id="productGroup">
           <!-- <div class="border border-blue-300 rounded-lg p-4 mb-5 flex justify-between">
           <h3>Apple</h3>
           <p>$500</p>
@@ -196,11 +197,10 @@
             checkout
           </button>          
         </div>
-      </div>
+      </div>        
     </footer>
-    <p class="text-sm text-gray-900 py-3 text-end print:hidden">Developed By Joyy</p>
     <template id="productCardTemplate">
-      <div class="product-card  p-5 flex justify-between bg-blue-50 rounded-lg border border-blue-400">
+      <div class="product-card p-3 flex justify-between bg-blue-50 rounded-lg border border-blue-400">
         <h3 class="product-name">Apple</h3>
         <p> <span class="product-price"></span>mmk</p>
       </div>
