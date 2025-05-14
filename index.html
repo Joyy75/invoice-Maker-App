@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoice App</title>
+</head>
+
+<body>
+  <main id="app" class="flex flex-col h-screen bg-transparent bg-gradient-to-b from-slate-200 to-blue-300 sm:max-h-screen sm:mx-auto sm:w-max">
+    <header class="">
+      <div class="container mx-auto">
+        <div class="p-6">
+          <h1 class="font-san font-bold text-2xl">Solution By Joyy</h1>
+          <p class="text-blue-700">Invoice App For Your Shop</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="">
+      <div class="container mx-auto mb-3 block print:hidden">
+        <form id="createRecordForm">
+          <div class="grid grid-cols-4 gap-4 bg-blue-100 border border-stone-200 shadow-2xl rounded-lg p-5">
+            <div class="col-span-2">
+              <label for="products" class="block mb-2 text-sm text-gray-900 text-[14px] font-semibold">Select products</label>
+              <select id="productSelect" name="product_select"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                required />
+              <option value="" selected>Products List</option>
+              </select>
+            </div>
+
+            <div class="col-span-1">
+              <div>
+                <label for="first_name" class="block mb-2 text-[14px] font-semibold text-gray-900">Quantity</label>
+                <input type="number" id="quantity" name="quantity"
+                  class="bg-gray-50 border border-gray-300 focus-visible:outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  required />
+              </div>
+            </div>
+            <div class="col-span-1">
+              <button type="submit"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center w-full h-full">
+                Add Now
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="container">
+        <div class="relative overflow-x-auto shadow-gray-400 shadow-2xl rounded-lg  ">
+          <table class="w-full text-sm text-left rtl:text-right text-gray-200">
+            <thead class="text-xs text-gray-900 h-16 uppercase bg-blue-100 ">
+              <tr>
+                <th scope="col" class="px-6 py-3">Product name</th>
+                <th scope="col" class="px-6 py-3 text-end">Price</th>
+                <th scope="col" class="px-6 py-3 text-end">Quantity</th>
+                <th scope="col" class="px-6 py-3 text-end">Cost</th>
+                <th scope="col" class="px-6 py-3 text-end table-cell print:hidden">Action</th>
+              </tr>
+            </thead>
+            <tbody id="recordGroup">
+              <tr class="border border-blue-200 bg-blue-50 text-gray-800 last:table-row hidden">
+                <th scope="row" colspan="5" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">
+                  There's no record yet
+                </th>
+              </tr>
+
+            <tfoot>
+              <tr class="border border-blue-200 bg-blue-50 text-gray-800">
+                <th scope="row" colspan="3"
+                  class="px-6 py-4 text-gray-900 whitespace-nowrap text-end text-[17px] font-semibold">
+                  Total
+                </th>
+                <td id="recordTotal" class="px-6 py-4 text-end font-semibold text-[15px]">
+                  0
+                </td>
+                <td class="px-6 py-4 text-end table-cell print:hidden"></td>
+              </tr>
+              <tr class="border border-blue-200 bg-blue-50 text-gray-800">
+                <th scope="row" colspan="3"
+                  class="px-6 py-4 text-gray-900 whitespace-nowrap text-end text-[15px] font-semibold">
+                  Tax
+                </th>
+                <td id="recordTax" class="px-6 py-4 text-end font-semibold text-[15px]">
+                  0
+                </td>
+                <td class="px-6 py-4 text-end table-cell print:hidden"></td>
+              </tr>
+              <tr class="border border-blue-200 bg-blue-100 text-gray-800">
+                <th scope="row" colspan="3"
+                  class="px-6 py-4 text-gray-900 whitespace-nowrap text-end text-[15px] font-semibold">
+                  Net Total
+                </th>
+                <td id="recordNetTotal" class="px-6 py-4 text-end font-semibold text-[15px]">
+                  0
+                </td>
+                <td class="px-6 py-4 text-end table-cell print:hidden"></td>
+              </tr>
+            </tfoot>
+            </tbody>
+          </table>          
+        </div>
+        <p class="mt-5 hidden print:block">Thanks for shopping with us! Have a great day!</p>
+      </div>
+    </section>
+
+    <section id="productSideBar"
+      class="fixed right-0 w-[450px] h-screen bg-gradient-to-b from-slate-200 to-blue-300 bg-blue-50  shadow-2xl shadow-gray-400 rounded-lg  z-50 translate-x-full sm:max-h-screen sm:mx-auto sm:w-max ">
+
+      <div class="p-4">
+        <div class="flex justify-between items-center mb-5 ">
+
+          <div class="">
+            <h1 class="font-san font-bold text-2xl mt-4">Manage Inventory</h1>
+            <p class="text-blue-700 mt-1">Available Products</p>
+          </div>
+
+          <button id="closeSideBarBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="size-6 pointer-events-none">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg></button>
+        </div>
+
+        <div class="flex flex-col gap-4  mb-5 mt-5" id="productGroup">
+          <!-- <div class="border border-blue-300 rounded-lg p-4 mb-5 flex justify-between">
+          <h3>Apple</h3>
+          <p>$500</p>
+        </div> -->
+        </div>
+
+        <div class="p-4 bg-blue-200 rounded-lg border border-blue-400 ">
+          <form action="" id="productCreateForm">
+            <div class="grid grid-cols-3 grid-rows-2 gap-4">
+              <div class="col-span-3">
+                <div>
+                  <label for="first_name" class="block mb-2 text-[15px] font-medium text-gray-800">New Products
+                    Name</label>
+                  <input type="text" id="newProductName" name="new-product-name"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 focus-visible:outline-none rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    required />
+                </div>
+              </div>
+
+              <div class="col-span-2">
+                <div>
+                  <label for="first_name" class="block mb-2 text-[15px] font-medium text-gray-800">New Products
+                    Price</label>
+                  <input type="number" id="newProductPrice" name="new-product-price"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    required />
+                </div>
+              </div>
+              <div class="col-span-1">
+                <button type="button" id="addNewProductBtn"
+                  class="text-white bg-blue-700 hover:bg-blue-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-[26px] ">
+                  Add New
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="mt-auto">
+      <div class="container mx-auto py-2 p-">
+        <div class="flex justify-end gap-3 print:hidden"> 
+          <button type="button" id="manageInventoryBtn"
+            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-blue-200 rounded-lg border border-blue-300 hover:bg-blue-400 shadow-2xl shadow-black hover:text-blue-900 focus:z-10 focus:ring-4 focus:ring-gray-100">
+            Manage Inventory
+          </button>
+          <button type="button" id="checkOut"
+            class="text-white bg-blue-700 hover:bg-blue-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 shadow-2xl shadow-black">
+            checkout
+          </button>          
+        </div>
+      </div>
+    </footer>
+    <p class="text-sm text-gray-900 py-3 text-end">Developed By Joyy</p>
+    <template id="productCardTemplate">
+      <div class="product-card  p-5 flex justify-between bg-blue-50 rounded-lg border border-blue-400">
+        <h3 class="product-name">Apple</h3>
+        <p> <span class="product-price"></span>mmk</p>
+      </div>
+    </template>
+
+    <template id="recordRowTemplate">
+      <tr class="record-row border border-blue-200 odd:ring-offset-sky-600 even:ring-offset-blue-300 bg-blue-50 text-gray-800 group">
+        <th scope="row" class="record-product-name px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+          Apple
+        </th>
+        <td class="record-product-price px-6 py-4 text-end">$500</td>
+        <td class=" px-6 py-4 text-end">
+          <button class="quantity-sub border border-blue-300 rounded-full p-0.5 text-blue-600 active:scale-90 hidden group-hover:inline-block ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="size-3 pointer-events-none">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+            </svg>
+          </button>
+          <span class="record-quantity w-5 inline-block">0</span>
+          <button class="quantity-add border border-blue-300 rounded-full p-0.5 text-blue-600 active:scale-90 hidden group-hover:inline-block">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="size-3 pointer-events-none">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+
+          </button>
+        </td>
+        <td class="record-cost px-6 py-4 text-end">$1500</td>
+        <td class="px-6 py-4 text-end table-cell print:hidden">
+          <button class="record-remove font-medium text-blue-600 hover:underline">Remove</button>
+        </td>
+      </tr>
+    </template>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
